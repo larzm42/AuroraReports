@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fuel" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b61398b-eee6-406b-9761-a0424d59bab0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="GameID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RaceID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ReportTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Fuel."Date" AS Fuel_Date,
+     sum(Fuel."FuelStockpile") AS Fuel_FuelStockpile
+FROM
+     "Fuel" Fuel
+WHERE
+     Fuel."GameID" = $P{GameID} and
+     Fuel."RaceID" = $P{RaceID}
+GROUP BY
+     Fuel_Date]]>
+	</queryString>
+	<field name="Fuel_Date" class="java.lang.Object"/>
+	<field name="Fuel_FuelStockpile" class="java.lang.Object"/>
+	<group name="FUEL_DATE">
+		<groupExpression><![CDATA[$F{Fuel_Date}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement uuid="43849ebc-adf8-4a4c-ac55-ddad8b5760d0" x="0" y="0" width="752" height="40"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="434" splitType="Stretch">
+			<timeSeriesChart>
+				<chart customizerClass="org.larz.aurorareports.ChartCustomizer">
+					<reportElement uuid="88af9eba-c6e9-4460-b6c1-b4a8d6aabf9e" x="0" y="0" width="752" height="434"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<timeSeriesDataset>
+					<timeSeries>
+						<seriesExpression><![CDATA["Fuel"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[new Date($F{Fuel_Date}*1000l)]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{Fuel_FuelStockpile}]]></valueExpression>
+					</timeSeries>
+				</timeSeriesDataset>
+				<timeSeriesPlot isShowShapes="false">
+					<plot/>
+					<timeAxisFormat>
+						<axisFormat/>
+					</timeAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Litres"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</timeSeriesPlot>
+			</timeSeriesChart>
+		</band>
+	</summary>
+</jasperReport>

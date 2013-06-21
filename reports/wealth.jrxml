@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="wealth" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="715f7856-37c6-4d4b-9617-50ac141e230d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="GameID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RaceID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ReportTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Wealth."Date" AS Wealth_Date,
+     Wealth."WealthPoints" AS Wealth_WealthPoints
+FROM
+     "Wealth" Wealth
+WHERE
+     Wealth."GameID" = $P{GameID} and
+     Wealth."RaceID" = $P{RaceID}
+GROUP BY
+     Wealth_Date]]>
+	</queryString>
+	<field name="Wealth_Date" class="java.lang.Object"/>
+	<field name="Wealth_WealthPoints" class="java.lang.Object"/>
+	<group name="WEALTH_DATE">
+		<groupExpression><![CDATA[$F{Wealth_Date}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9e9ac844-0900-4ad7-a6a2-82d3c532b0e6" x="0" y="0" width="752" height="43"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="432" splitType="Stretch">
+			<timeSeriesChart>
+				<chart customizerClass="org.larz.aurorareports.ChartCustomizer">
+					<reportElement uuid="2f5f484d-3574-4075-9a6b-7989271700c7" x="0" y="0" width="752" height="432"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<timeSeriesDataset>
+					<timeSeries>
+						<seriesExpression><![CDATA["Wealth"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[new Date($F{Wealth_Date}*1000l)]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{Wealth_WealthPoints}]]></valueExpression>
+					</timeSeries>
+				</timeSeriesDataset>
+				<timeSeriesPlot isShowShapes="false">
+					<plot/>
+					<timeAxisFormat>
+						<axisFormat/>
+					</timeAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</timeSeriesPlot>
+			</timeSeriesChart>
+		</band>
+	</summary>
+</jasperReport>

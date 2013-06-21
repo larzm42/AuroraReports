@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="population" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8934f9a0-4477-49ae-be99-67e78478650c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="GameID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RaceID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ReportTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Population."Date" AS Population_Date,
+     sum(Population."Population") AS Population_Population
+FROM
+     "Population" Population
+WHERE
+     Population."GameID" = $P{GameID} and
+     Population."RaceID" = $P{RaceID}
+GROUP BY
+     Population_Date]]>
+	</queryString>
+	<field name="Population_Date" class="java.lang.Object"/>
+	<field name="Population_Population" class="java.lang.Object"/>
+	<group name="POPULATION_DATE">
+		<groupExpression><![CDATA[$F{Population_Date}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement uuid="36d1c946-7b8e-4206-8049-4c121dac336a" x="0" y="0" width="752" height="42"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="432" splitType="Stretch">
+			<timeSeriesChart>
+				<chart customizerClass="org.larz.aurorareports.ChartCustomizer">
+					<reportElement uuid="4bae25a3-62e7-4e42-8049-4883c4bf904b" x="0" y="0" width="752" height="432"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<timeSeriesDataset>
+					<timeSeries>
+						<seriesExpression><![CDATA["Population"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[new Date($F{Population_Date}*1000l)]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{Population_Population}]]></valueExpression>
+					</timeSeries>
+				</timeSeriesDataset>
+				<timeSeriesPlot isShowShapes="false">
+					<plot/>
+					<timeAxisFormat>
+						<axisFormat/>
+					</timeAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Millons"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</timeSeriesPlot>
+			</timeSeriesChart>
+		</band>
+	</summary>
+</jasperReport>
