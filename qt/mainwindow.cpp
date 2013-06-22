@@ -240,11 +240,11 @@ void MainWindow::on_generateReportButton_clicked()
     args << ui->reportComboBox->currentText() + " Report for " + ui->raceComboBox->currentText();
     args << ui->reportComboBox->currentText().toLower();
 
-    QString program = "java";
+    QString program = "jre7\\bin\\java";
 
     QProcess *myProcess = new QProcess();
-    QFileInfo exe = QFileInfo(program);
-    myProcess->setWorkingDirectory(exe.absolutePath());
+    //QFileInfo exe = QFileInfo(program);
+    //myProcess->setWorkingDirectory(exe.absolutePath());
     myProcess->start(program, args);
 
     connect(myProcess, SIGNAL(finished(int)), this, SLOT(generateReportFinished()));

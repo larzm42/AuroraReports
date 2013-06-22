@@ -3,45 +3,6 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<subDataset name="New Dataset 1" uuid="2f2d8478-b00f-4c8d-8d14-867de85c140d">
-		<queryString language="SQL">
-			<![CDATA[SELECT
-     Minerals."Date" AS Minerals_Date,
-     sum(Minerals."Duranium") AS Minerals_Duranium,
-     sum(Minerals."Neutronium") AS Minerals_Neutronium,
-     sum(Minerals."Corbomite") AS Minerals_Corbomite,
-     sum(Minerals."Tritanium") AS Minerals_Tritanium,
-     sum(Minerals."Boronide") AS Minerals_Boronide,
-     sum(Minerals."Mercassium") AS Minerals_Mercassium,
-     sum(Minerals."Vendarite") AS Minerals_Vendarite,
-     sum(Minerals."Sorium") AS Minerals_Sorium,
-     sum(Minerals."Uridium") AS Minerals_Uridium,
-     sum(Minerals."Corundium") AS Minerals_Corundium,
-     sum(Minerals."Gallicite") AS Minerals_Gallicite
-FROM
-    "Minerals" Minerals
-WHERE
-     Minerals."GameID" = 45
-GROUP BY
-     Minerals_Date]]>
-		</queryString>
-		<field name="Minerals_Date" class="java.lang.Object"/>
-		<field name="Minerals_Duranium" class="java.lang.Object"/>
-		<field name="Minerals_Neutronium" class="java.lang.Object"/>
-		<field name="Minerals_Corbomite" class="java.lang.Object"/>
-		<field name="Minerals_Tritanium" class="java.lang.Object"/>
-		<field name="Minerals_Boronide" class="java.lang.Object"/>
-		<field name="Minerals_Mercassium" class="java.lang.Object"/>
-		<field name="Minerals_Vendarite" class="java.lang.Object"/>
-		<field name="Minerals_Sorium" class="java.lang.Object"/>
-		<field name="Minerals_Uridium" class="java.lang.Object"/>
-		<field name="Minerals_Corundium" class="java.lang.Object"/>
-		<field name="Minerals_Gallicite" class="java.lang.Object"/>
-		<group name="Minerals_Date">
-			<groupExpression><![CDATA[$F{Minerals_Date}]]></groupExpression>
-		</group>
-	</subDataset>
-	<subDataset name="dataset1" uuid="ecf42076-edc7-43eb-9e5d-bfe97bc7c4f8"/>
 	<parameter name="GameID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>

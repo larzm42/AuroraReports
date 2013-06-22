@@ -63,7 +63,7 @@ public class Aurora {
 	    Connection c = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\lamoor\\AuroraReports-build-debug\\aurora.db3");
+			c = DriverManager.getConnection("jdbc:sqlite:aurora.db3");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

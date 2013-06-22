@@ -8,6 +8,7 @@ QT       += core gui sql
 
 TARGET = AuroraReports
 TEMPLATE = app
+RC_FILE = aurora.rc
 
 SOURCES += main.cpp\
         mainwindow.cpp \
