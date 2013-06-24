@@ -43,6 +43,8 @@ public:
     void connectToAurora();
     static QList<GameData> getGameList(QString conn);
     static QList<GameData> getRaceList(QString conn, int gameId);
+    QString getMinDate();
+    QString getMaxDate();
 
 private slots:
     void putDBReaderInAThread();
@@ -54,6 +56,8 @@ private slots:
     void on_gameComboBox_currentIndexChanged(int index);
     void on_generateReportButton_clicked();
     void generateReportFinished();
+    void on_dateComboBox_currentIndexChanged(int index);
+    void on_reportComboBox_currentIndexChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;

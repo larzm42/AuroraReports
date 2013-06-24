@@ -12,6 +12,12 @@
 	<parameter name="ReportTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="MinDate" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MaxDate" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      Population."Date" AS Population_Date,
@@ -20,7 +26,9 @@ FROM
      "Population" Population
 WHERE
      Population."GameID" = $P{GameID} and
-     Population."RaceID" = $P{RaceID}
+     Population."RaceID" = $P{RaceID} and
+     Population."Date" >= $P{MinDate} and
+     Population."Date" <= $P{MaxDate}
 GROUP BY
      Population_Date]]>
 	</queryString>

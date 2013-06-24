@@ -12,6 +12,12 @@
 	<parameter name="ReportTitle" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="MinDate" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MaxDate" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      Wealth."Date" AS Wealth_Date,
@@ -20,7 +26,9 @@ FROM
      "Wealth" Wealth
 WHERE
      Wealth."GameID" = $P{GameID} and
-     Wealth."RaceID" = $P{RaceID}
+     Wealth."RaceID" = $P{RaceID} and
+     Wealth."Date" >= $P{MinDate} and
+     Wealth."Date" <= $P{MaxDate}
 GROUP BY
      Wealth_Date]]>
 	</queryString>

@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     QThreadPool::globalInstance()->setMaxThreadCount(1);
+    ui->startDateText->setText("2025");
+    ui->endDateText->setText("2025");
 
     connected = false;
     getConnection();
@@ -238,15 +240,76 @@ void MainWindow::on_generateReportButton_clicked()
     args << ui->gameComboBox->itemData(ui->gameComboBox->currentIndex()).toString();
     args << ui->raceComboBox->itemData(ui->raceComboBox->currentIndex()).toString();
     args << ui->reportComboBox->currentText() + " Report for " + ui->raceComboBox->currentText();
-    args << ui->reportComboBox->currentText().toLower();
+    args << getMinDate();
+    args << getMaxDate();
+    QString reportName = ui->reportComboBox->currentText().toLower();
+    if (reportName == "minerals") {
+        if (ui->mineralComboBox->currentIndex() != 0) {
+            reportName = "minerals" + ui->mineralComboBox->currentText();
+        }
+    }
+    args << reportName;
 
     QString program = "jre7\\bin\\java";
 
     QProcess *myProcess = new QProcess();
-    //QFileInfo exe = QFileInfo(program);
-    //myProcess->setWorkingDirectory(exe.absolutePath());
     myProcess->start(program, args);
 
     connect(myProcess, SIGNAL(finished(int)), this, SLOT(generateReportFinished()));
+}
 
+QString MainWindow::getMinDate()
+{
+    if (ui->dateComboBox->currentText() == "All") {
+        return "-9999999999999";
+    }
+    qlonglong day = ui->startDateSpinBox->value();
+    qlonglong month = ui->startDateComboBox->currentIndex()+1;
+    qlonglong year = ui->startDateText->text().toLongLong();
+    qlonglong seconds = (day-1) * 24*60*60;
+    seconds += (month-1) * 30*24*60*60;
+    seconds += (year-1970) * 12*30*24*60*60;
+    return QString::number(seconds);
+}
+
+QString MainWindow::getMaxDate()
+{
+    if (ui->dateComboBox->currentText() == "All") {
+        return "9999999999999";
+    }
+    qlonglong day = ui->endDateSpinBox->value();
+    qlonglong month = ui->endDateComboBox->currentIndex()+1;
+    qlonglong year = ui->endDateText->text().toLongLong();
+    qlonglong seconds = (day-1) * 24*60*60;
+    seconds += (month-1) * 30*24*60*60;
+    seconds += (year-1970) * 12*30*24*60*60;
+    return QString::number(seconds);
+}
+
+void MainWindow::on_dateComboBox_currentIndexChanged(int index)
+{
+    if (index == 0) {
+        ui->startDateText->setEnabled(false);
+        ui->startDateComboBox->setEnabled(false);
+        ui->startDateSpinBox->setEnabled(false);
+        ui->endDateText->setEnabled(false);
+        ui->endDateComboBox->setEnabled(false);
+        ui->endDateSpinBox->setEnabled(false);
+    } else {
+        ui->startDateText->setEnabled(true);
+        ui->startDateComboBox->setEnabled(true);
+        ui->startDateSpinBox->setEnabled(true);
+        ui->endDateText->setEnabled(true);
+        ui->endDateComboBox->setEnabled(true);
+        ui->endDateSpinBox->setEnabled(true);
+    }
+}
+
+void MainWindow::on_reportComboBox_currentIndexChanged(const QString &arg1)
+{
+    if (arg1 == "Minerals") {
+        ui->mineralComboBox->setEnabled(true);
+    } else {
+        ui->mineralComboBox->setEnabled(false);
+    }
 }

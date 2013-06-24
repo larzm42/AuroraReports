@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="minerals" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2abae679-248e-442e-9f76-2ee7705f2e2d">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mineralsCorbomite" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2abae679-248e-442e-9f76-2ee7705f2e2d">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="48"/>
@@ -82,59 +82,9 @@ GROUP BY
 				</chart>
 				<timeSeriesDataset>
 					<timeSeries>
-						<seriesExpression><![CDATA["Duranium"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Duranium}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Neutronium"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Neutronium}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
 						<seriesExpression><![CDATA["Corbomite"]]></seriesExpression>
 						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
 						<valueExpression><![CDATA[$F{Minerals_Corbomite}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Tritanium"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Tritanium}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Boronide"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Boronide}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Mercassium"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Mercassium}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Vendarite"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Vendarite}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Sorium"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Sorium}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Uridium"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Uridium}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Corundium"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Corundium}]]></valueExpression>
-					</timeSeries>
-					<timeSeries>
-						<seriesExpression><![CDATA["Gallicite"]]></seriesExpression>
-						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
-						<valueExpression><![CDATA[$F{Minerals_Gallicite}]]></valueExpression>
 					</timeSeries>
 				</timeSeriesDataset>
 				<timeSeriesPlot isShowShapes="false">

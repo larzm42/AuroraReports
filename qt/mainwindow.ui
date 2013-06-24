@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>449</width>
-    <height>248</height>
+    <width>409</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>421</width>
+      <width>391</width>
       <height>61</height>
      </rect>
     </property>
@@ -88,13 +88,13 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>190</y>
-      <width>411</width>
+      <x>40</x>
+      <y>260</y>
+      <width>361</width>
       <height>34</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,0">
+    <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,0,0">
      <property name="topMargin">
       <number>10</number>
      </property>
@@ -112,6 +112,19 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="generateReportButton">
+       <property name="font">
+        <font>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Generate Report</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="quitButton">
        <property name="text">
         <string>Quit</string>
@@ -125,8 +138,8 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>421</width>
-      <height>121</height>
+      <width>391</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="font">
@@ -158,7 +171,49 @@
         <widget class="QComboBox" name="gameComboBox">
          <property name="minimumSize">
           <size>
-           <width>150</width>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_19">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Race:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="raceComboBox">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
            <height>0</height>
           </size>
          </property>
@@ -186,9 +241,9 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_18">
+      <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QLabel" name="label_17">
+        <widget class="QLabel" name="label">
          <property name="font">
           <font>
            <weight>50</weight>
@@ -196,16 +251,88 @@
           </font>
          </property>
          <property name="text">
-          <string>Race:</string>
+          <string>Date Range:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="raceComboBox">
-         <property name="minimumSize">
+        <widget class="QComboBox" name="dateComboBox">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>All</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Range</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
           <size>
-           <width>150</width>
-           <height>0</height>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>From:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QSpinBox" name="startDateSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLineEdit" name="startDateText">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="font">
@@ -216,8 +343,230 @@
          </property>
         </widget>
        </item>
-       <item>
-        <spacer name="horizontalSpacer_18">
+       <item row="2" column="1">
+        <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>To:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QSpinBox" name="endDateSpinBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>30</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QComboBox" name="startDateComboBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>Jan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Feb</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Apr</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>May</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jun</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jul</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Aug</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sep</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Oct</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Nov</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dec</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QComboBox" name="endDateComboBox">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>Jan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Feb</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mar</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Apr</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>May</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jun</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Jul</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Aug</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sep</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Oct</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Nov</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Dec</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="4">
+        <widget class="QLineEdit" name="endDateText">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="5">
+        <spacer name="horizontalSpacer_2">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -277,6 +626,79 @@
         </widget>
        </item>
        <item>
+        <widget class="QComboBox" name="mineralComboBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="font">
+          <font>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <item>
+          <property name="text">
+           <string>All</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Duranium</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Neutronium</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Corbomite</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Tritanium</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Boronide</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mercassium</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Vendarite</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Sorium</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Uridium</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Corundium</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Gallicite</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
         <spacer name="horizontalSpacer_19">
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -288,19 +710,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="generateReportButton">
-         <property name="font">
-          <font>
-           <weight>50</weight>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Generate Report</string>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
