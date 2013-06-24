@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mineralsNeutronium" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2abae679-248e-442e-9f76-2ee7705f2e2d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="GameID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="RaceID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ReportTitle" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MinDate" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MaxDate" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     Minerals."Date" AS Minerals_Date,
+     sum(Minerals."Duranium") AS Minerals_Duranium,
+     sum(Minerals."Neutronium") AS Minerals_Neutronium,
+     sum(Minerals."Corbomite") AS Minerals_Corbomite,
+     sum(Minerals."Tritanium") AS Minerals_Tritanium,
+     sum(Minerals."Boronide") AS Minerals_Boronide,
+     sum(Minerals."Mercassium") AS Minerals_Mercassium,
+     sum(Minerals."Vendarite") AS Minerals_Vendarite,
+     sum(Minerals."Sorium") AS Minerals_Sorium,
+     sum(Minerals."Uridium") AS Minerals_Uridium,
+     sum(Minerals."Corundium") AS Minerals_Corundium,
+     sum(Minerals."Gallicite") AS Minerals_Gallicite
+FROM
+     "Minerals" Minerals
+WHERE
+     Minerals."GameID" = $P{GameID} and
+     Minerals."RaceID" = $P{RaceID} and
+     Minerals."Date" >= $P{MinDate} and
+     Minerals."Date" <= $P{MaxDate}
+GROUP BY
+     Minerals_Date]]>
+	</queryString>
+	<field name="Minerals_Date" class="java.lang.Object"/>
+	<field name="Minerals_Duranium" class="java.lang.Object"/>
+	<field name="Minerals_Neutronium" class="java.lang.Object"/>
+	<field name="Minerals_Corbomite" class="java.lang.Object"/>
+	<field name="Minerals_Tritanium" class="java.lang.Object"/>
+	<field name="Minerals_Boronide" class="java.lang.Object"/>
+	<field name="Minerals_Mercassium" class="java.lang.Object"/>
+	<field name="Minerals_Vendarite" class="java.lang.Object"/>
+	<field name="Minerals_Sorium" class="java.lang.Object"/>
+	<field name="Minerals_Uridium" class="java.lang.Object"/>
+	<field name="Minerals_Corundium" class="java.lang.Object"/>
+	<field name="Minerals_Gallicite" class="java.lang.Object"/>
+	<group name="Minerals_Date">
+		<groupExpression><![CDATA[$F{Minerals_Date}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement uuid="a07c90f1-d6d8-46f8-a999-3db19a20961f" x="0" y="0" width="752" height="37"/>
+				<textElement textAlignment="Center">
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="431" splitType="Stretch">
+			<timeSeriesChart>
+				<chart customizerClass="org.larz.aurorareports.ChartCustomizer">
+					<reportElement uuid="cf0d613a-1983-4e0c-887f-43335407f654" x="0" y="0" width="752" height="431"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<timeSeriesDataset>
+					<timeSeries>
+						<seriesExpression><![CDATA["Neutronium"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[new Date($F{Minerals_Date}*1000l)]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{Minerals_Neutronium}]]></valueExpression>
+					</timeSeries>
+				</timeSeriesDataset>
+				<timeSeriesPlot isShowShapes="false">
+					<plot/>
+					<timeAxisFormat>
+						<axisFormat/>
+					</timeAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Tons"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</timeSeriesPlot>
+			</timeSeriesChart>
+		</band>
+	</summary>
+</jasperReport>
