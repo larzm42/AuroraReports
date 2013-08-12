@@ -86,7 +86,7 @@ bool MainWindow::getMDBConnection(QString location)
 bool MainWindow::getConnection()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "sqlLiteConnection");
-    db.setDatabaseName("aurora.db3");
+    db.setDatabaseName("data\\aurora.db3");
     if (!db.open()) {
         QMessageBox msgBox(QMessageBox::Warning, tr("Error"),
                            "Error opening local database.", 0, this);
@@ -236,7 +236,7 @@ void MainWindow::on_generateReportButton_clicked()
     dialog.show();
 
     QStringList args;
-    args << "-classpath" << "lib\\*;aurora.jar" << "org.larz.aurorareports.Aurora";
+    args << "-classpath" << "lib\\*;lib\\aurora.jar" << "org.larz.aurorareports.Aurora";
     args << ui->gameComboBox->itemData(ui->gameComboBox->currentIndex()).toString();
     args << ui->raceComboBox->itemData(ui->raceComboBox->currentIndex()).toString();
     args << ui->reportComboBox->currentText() + " Report for " + ui->raceComboBox->currentText();

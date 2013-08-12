@@ -23,8 +23,7 @@ import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.plot.XYPlot;
 
 /**
- * @author lamoor
- *
+ * ChartCustomizer
  */
 public class ChartCustomizer implements JRChartCustomizer {
 

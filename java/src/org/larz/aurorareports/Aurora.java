@@ -26,8 +26,7 @@ import java.util.Map;
 import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
- * @author lamoor
- *
+ * Aurora
  */
 public class Aurora {
 	
@@ -57,11 +56,14 @@ public class Aurora {
 		}		
 	}
 	
+	/**
+	 * @return
+	 */
 	public static Connection getConnection() {
 	    Connection c = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:aurora.db3");
+			c = DriverManager.getConnection("jdbc:sqlite:data\\aurora.db3");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -24,8 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author lamoor
- *
+ * AuroraDateFormat
  */
 public class AuroraDateFormat extends DateFormat {
 	private static final long serialVersionUID = 7448222678939801179L;
