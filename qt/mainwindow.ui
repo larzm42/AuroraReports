@@ -88,16 +88,23 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>10</x>
       <y>260</y>
-      <width>361</width>
+      <width>391</width>
       <height>34</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,0,0">
+    <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="0,0,0,0">
      <property name="topMargin">
       <number>10</number>
      </property>
+     <item>
+      <widget class="QPushButton" name="deleteButton">
+       <property name="text">
+        <string>Delete Data</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer name="horizontalSpacer_7">
        <property name="orientation">

@@ -28,7 +28,7 @@ DBReader::~DBReader() { }
 
 void DBReader::process()
 {
-    std::cout << "Read started" << std::endl;
+    //std::cout << "Read started" << std::endl;
     QList<MainWindow::GameData> games = MainWindow::getGameList("mdbConnection");
     QListIterator<MainWindow::GameData> gameIter(games);
     while (gameIter.hasNext()) {
@@ -42,7 +42,7 @@ void DBReader::process()
             updateMinerals(gameData.id, raceData.id, currentDate);
         }
     }
-    std::cout << "Read complete" << std::endl;
+    //std::cout << "Read complete" << std::endl;
     emit finished();
 }
 

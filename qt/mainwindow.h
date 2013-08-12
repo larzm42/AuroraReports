@@ -59,6 +59,8 @@ private slots:
     void on_dateComboBox_currentIndexChanged(int index);
     void on_reportComboBox_currentIndexChanged(const QString &arg1);
 
+    void on_deleteButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     bool connected;

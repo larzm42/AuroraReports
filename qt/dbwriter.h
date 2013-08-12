@@ -25,7 +25,7 @@
 class DBWriter : public QRunnable
 {
     void run() {
-        std::cout << "WRITE STARTED" << std::endl;
+        //std::cout << "WRITE STARTED" << std::endl;
         QSqlDatabase db = QSqlDatabase::database("sqlLiteConnection");
         if (!db.open() || !db.isValid()) {
             return;
@@ -38,7 +38,7 @@ class DBWriter : public QRunnable
         query2.bindValue(2, currentDate);
         query2.exec();
         if (query2.next()) {
-            std::cout << "Delete future rows" << std::endl;
+           // std::cout << "Delete future rows" << std::endl;
             QSqlQuery query21(db);
             query21.prepare("DELETE FROM \"Wealth\" where \"GameID\"=? and \"RaceId\"=? and \"Date\">?");
             query21.bindValue(0, gameId);
@@ -75,7 +75,7 @@ class DBWriter : public QRunnable
         query.bindValue(2, currentDate);
         query.exec();
         while (query.next()) {
-            std::cout << "ROW EXISTS" << std::endl;
+           // std::cout << "ROW EXISTS" << std::endl;
             return;
         }
 
@@ -102,7 +102,7 @@ class DBWriter : public QRunnable
             query3.addBindValue(Gallicite.at(x));
             query3.exec();
 
-            std::cout << "INSERT into \"Minerals\" (\"Date\" \"SystemID\", \"SystemBodyID\", \"Duranium\") values (" << currentDate << ", " << SystemID.at(x) << ", " << SystemBodyID.at(x) << ", " << Duranium.at(x) << ")" << std::endl;
+            //std::cout << "INSERT into \"Minerals\" (\"Date\" \"SystemID\", \"SystemBodyID\", \"Duranium\") values (" << currentDate << ", " << SystemID.at(x) << ", " << SystemBodyID.at(x) << ", " << Duranium.at(x) << ")" << std::endl;
         }
 
         for (int x = 0; x < FuelStockpile.size(); x++) {
@@ -117,7 +117,7 @@ class DBWriter : public QRunnable
             query4.addBindValue(FuelStockpile.at(x));
             query4.exec();
 
-            std::cout << "INSERT into \"Fuel\" (\"Date\" \"SystemID\", \"SystemBodyID\", \"FuelStockpile\") values (" << currentDate << ", " << SystemID.at(x) << ", " << SystemBodyID.at(x) << ", " << FuelStockpile.at(x) << ")" << std::endl;
+            //std::cout << "INSERT into \"Fuel\" (\"Date\" \"SystemID\", \"SystemBodyID\", \"FuelStockpile\") values (" << currentDate << ", " << SystemID.at(x) << ", " << SystemBodyID.at(x) << ", " << FuelStockpile.at(x) << ")" << std::endl;
         }
 
         for (int x = 0; x < Population.size(); x++) {
@@ -132,7 +132,7 @@ class DBWriter : public QRunnable
             query5.addBindValue(Population.at(x));
             query5.exec();
 
-            std::cout << "INSERT into \"Population\" (\"Date\" \"SystemID\", \"SystemBodyID\", \"Population\") values (" << currentDate << ", " << SystemID.at(x) << ", " << SystemBodyID.at(x) << ", " << Population.at(x) << ")" << std::endl;
+            //std::cout << "INSERT into \"Population\" (\"Date\" \"SystemID\", \"SystemBodyID\", \"Population\") values (" << currentDate << ", " << SystemID.at(x) << ", " << SystemBodyID.at(x) << ", " << Population.at(x) << ")" << std::endl;
         }
 
         QSqlQuery query6(db);
@@ -143,8 +143,8 @@ class DBWriter : public QRunnable
         query6.addBindValue(WealthPoints);
         query6.exec();
 
-        std::cout << "INSERT into \"Wealth\" (\"Date\" \"WealthPoints\") values (" << currentDate << ", " << WealthPoints << ")" << std::endl;
-        std::cout << "WRITE COMPLETE" << std::endl;
+        //std::cout << "INSERT into \"Wealth\" (\"Date\" \"WealthPoints\") values (" << currentDate << ", " << WealthPoints << ")" << std::endl;
+        //std::cout << "WRITE COMPLETE" << std::endl;
     }
 
 public:

@@ -63,7 +63,7 @@ bool MainWindow::getMDBConnection(QString location)
 {
     location.replace("\\", "\\\\");
     QSqlDatabase mdb = QSqlDatabase::addDatabase("QODBC", "mdbConnection");
-    mdb.setDatabaseName("Driver={Microsoft Access Driver (*.mdb)};DBQ=" + location + "\\Stevefire.mdb;PWD=raistlin31;READONLY=true");
+    mdb.setDatabaseName("Driver={Microsoft Access Driver (*.mdb)};DBQ=" + location + "\\Stevefire.mdb;PWD=" + QByteArray::fromBase64("cmFpc3RsaW4zMQ==") + ";READONLY=true");
     if (!mdb.open()) {
         QMessageBox msgBox(QMessageBox::Warning, tr("Error"),
                            "Error opening Aurora database. Please select the installation directory of Aurora.", 0, this);
@@ -72,7 +72,7 @@ bool MainWindow::getMDBConnection(QString location)
         return false;
     }
     QSqlDatabase mdb2 = QSqlDatabase::addDatabase("QODBC", "mdbConnection2");
-    mdb2.setDatabaseName("Driver={Microsoft Access Driver (*.mdb)};DBQ=" + location + "\\Stevefire.mdb;PWD=raistlin31;READONLY=true");
+    mdb2.setDatabaseName("Driver={Microsoft Access Driver (*.mdb)};DBQ=" + location + "\\Stevefire.mdb;PWD=" + QByteArray::fromBase64("cmFpc3RsaW4zMQ==") + ";READONLY=true");
     if (!mdb2.open()) {
         QMessageBox msgBox(QMessageBox::Warning, tr("Error"),
                            "Error opening Aurora database. Please select the installation directory of Aurora.", 0, this);
@@ -312,4 +312,45 @@ void MainWindow::on_reportComboBox_currentIndexChanged(const QString &arg1)
     } else {
         ui->mineralComboBox->setEnabled(false);
     }
+}
+
+void MainWindow::on_deleteButton_clicked()
+{
+    int ret = QMessageBox::information(this, tr("Delete"),
+                                    tr("Delete report data for game " + ui->gameComboBox->currentText().toLocal8Bit() + ", race " + ui->raceComboBox->currentText().toLocal8Bit() + "?"),
+                                    QMessageBox::Yes | QMessageBox::No);
+    if (ret == QMessageBox::Yes) {
+        QSqlDatabase db = QSqlDatabase::database("sqlLiteConnection");
+        if (!db.open() || !db.isValid()) {
+            return;
+        }
+        int gameId = ui->gameComboBox->itemData(ui->gameComboBox->currentIndex()).toInt();
+        int raceId = ui->raceComboBox->itemData(ui->raceComboBox->currentIndex()).toInt();
+
+        QSqlQuery query1(db);
+        query1.prepare("DELETE FROM \"Wealth\" where \"GameID\"=? and \"RaceId\"=?");
+        query1.bindValue(0, gameId);
+        query1.bindValue(1, raceId);
+        query1.exec();
+
+        QSqlQuery query2(db);
+        query2.prepare("DELETE FROM \"Minerals\" where \"GameID\"=? and \"RaceId\"=?");
+        query2.bindValue(0, gameId);
+        query2.bindValue(1, raceId);
+        query2.exec();
+
+        QSqlQuery query3(db);
+        query3.prepare("DELETE FROM \"Population\" where \"GameID\"=? and \"RaceId\"=?");
+        query3.bindValue(0, gameId);
+        query3.bindValue(1, raceId);
+        query3.exec();
+
+        QSqlQuery query4(db);
+        query4.prepare("DELETE FROM \"Fuel\" where \"GameID\"=? and \"RaceId\"=?");
+        query4.bindValue(0, gameId);
+        query4.bindValue(1, raceId);
+        query4.exec();
+
+    }
+
 }

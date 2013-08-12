@@ -20,9 +20,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +30,6 @@ import net.sf.jasperreports.engine.JasperRunManager;
  *
  */
 public class Aurora {
-	private static final DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
 	
 	/**
 	 * @param args
@@ -46,11 +42,11 @@ public class Aurora {
 		parameters.put("MinDate", Long.valueOf(args[3]));
 		parameters.put("MaxDate", Long.valueOf(args[4]));
 		try {
-			String fileName = args[5] + format.format(new Date()) + ".pdf";
-			JasperRunManager.runReportToPdfFile(args[5] + ".jasper", fileName, parameters, getConnection());
+			File tempFile = File.createTempFile(args[5], ".pdf");
+			JasperRunManager.runReportToPdfFile("jasper" + File.separator + args[5] + ".jasper", tempFile.getAbsolutePath(), parameters, getConnection());
 			if (Desktop.isDesktopSupported()) {
 			    try {
-			        File myFile = new File(fileName);
+			        File myFile = new File(tempFile.getAbsolutePath());
 			        Desktop.getDesktop().open(myFile);
 			    } catch (IOException ex) {
 			        // no application registered for PDFs
