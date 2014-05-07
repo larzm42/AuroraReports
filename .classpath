@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="java/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="java/lib/ant-1.7.1.jar"/>
 	<classpathentry kind="lib" path="java/lib/antlr-2.7.5.jar"/>
 	<classpathentry kind="lib" path="java/lib/barbecue-1.5-beta1.jar"/>
 	<classpathentry kind="lib" path="java/lib/barcode4j-2.1.jar"/>
@@ -29,7 +28,6 @@
 	<classpathentry kind="lib" path="java/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="java/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="java/lib/groovy-all-2.0.1.jar"/>
-	<classpathentry kind="lib" path="java/lib/hibernate3.jar"/>
 	<classpathentry kind="lib" path="java/lib/hsqldb-1.8.0-10.jar"/>
 	<classpathentry kind="lib" path="java/lib/iText-2.1.7.js2.jar"/>
 	<classpathentry kind="lib" path="java/lib/jackson-annotations-2.0.5.jar"/>
@@ -38,17 +36,11 @@
 	<classpathentry kind="lib" path="java/lib/jasperreports-5.1.2.jar"/>
 	<classpathentry kind="lib" path="java/lib/jaxen-1.1.1.jar"/>
 	<classpathentry kind="lib" path="java/lib/jcommon-1.0.15.jar"/>
-	<classpathentry kind="lib" path="java/lib/jdt-compiler-3.1.1.jar"/>
 	<classpathentry kind="lib" path="java/lib/jfreechart-1.0.12.jar"/>
 	<classpathentry kind="lib" path="java/lib/jpa.jar"/>
 	<classpathentry kind="lib" path="java/lib/jxl-2.6.10.jar"/>
 	<classpathentry kind="lib" path="java/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="java/lib/mondrian-3.1.1.12687.jar"/>
 	<classpathentry kind="lib" path="java/lib/png-encoder-1.5.jar"/>
-	<classpathentry kind="lib" path="java/lib/poi-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="java/lib/poi-ooxml-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="java/lib/poi-ooxml-schemas-3.7-20101029.jar"/>
-	<classpathentry kind="lib" path="java/lib/rhino-1.7R3.jar"/>
 	<classpathentry kind="lib" path="java/lib/saaj-api-1.3.jar"/>
 	<classpathentry kind="lib" path="java/lib/serializer.jar"/>
 	<classpathentry kind="lib" path="java/lib/servlet-api-2.4.jar"/>
@@ -56,8 +48,6 @@
 	<classpathentry kind="lib" path="java/lib/spring-core-2.5.5.jar"/>
 	<classpathentry kind="lib" path="java/lib/sqlite-jdbc-3.7.2.jar"/>
 	<classpathentry kind="lib" path="java/lib/velocity-1.7-dep.jar"/>
-	<classpathentry kind="lib" path="java/lib/xalan-2.7.1.jar"/>
-	<classpathentry kind="lib" path="java/lib/xbean.jar"/>
 	<classpathentry kind="lib" path="java/lib/xercesImpl-2.10.0.jar"/>
 	<classpathentry kind="lib" path="java/lib/xml-apis-ext.jar"/>
 	<classpathentry kind="lib" path="java/lib/xml-apis.jar"/>

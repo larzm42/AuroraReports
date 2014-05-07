@@ -6,6 +6,8 @@
 
 QT       += core gui sql
 
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
 TARGET = AuroraReports
 TEMPLATE = app
 RC_FILE = aurora.rc
@@ -23,3 +25,8 @@ FORMS    += mainwindow.ui
 
 RESOURCES += \
     Resources.qrc
+
+OTHER_FILES += \
+    EnterpriseA.gif \
+    aurora.rc \
+    aurora.ico
